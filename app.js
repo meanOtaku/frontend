@@ -33,7 +33,22 @@ app.use(passport.session());
 mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
+const applicationSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    phonenumber: {
+        type: String,
+        required: true
+    },
+    course: {
+        type: String,
+        required: true
+    }
+})
 
+const Application = mongoose.model("Course", applicationSchema);
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -124,7 +139,7 @@ app.post("/admin/login", function(req, res){
         }
         else{
             passport.authenticate("local")(req, res, function(){
-                res.redirect("/admin/console");
+                res.redirect("/admin");
             });
         }
     });
@@ -209,6 +224,56 @@ app.get("/course/:courseTitle", function(req, res){
             res.render("nor/Course", {Course: JSON.parse(data)});
         })
     });
+})
+
+app.get("/applications", function(req, res){
+    Application.find(function(err, foundApplications){
+        if(!err){
+            if(req.isAuthenticated()){
+                res.render("applied", {applications: foundApplications});
+            }else{
+                res.redirect("/admin/login");
+            }
+        }else{
+            res.send(err);
+        }
+    })
+})
+
+app.post("/delete/applications/:id", function(req, res){
+    Application.findByIdAndDelete(
+        {_id: req.params.id},
+        function(err, foundApplications){
+        if(!err){
+            if(req.isAuthenticated()){
+                res.redirect("/applications");
+            }else{
+                res.redirect("/admin/login");
+            }
+        }else{
+            res.send(err);
+        }
+    })
+})
+
+app.get("/apply/:applyTitle", function(req, res){
+    res.render("apply", {applied: req.params.applyTitle});
+})
+
+app.post("/apply", function(req, res){
+    const application = new Application({
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
+        course: req.body.course
+    })
+
+    application.save(function(err){
+        if(!err){
+            res.redirect("/course");
+        }else{
+            res.send(err);
+        }
+    })
 })
 
 

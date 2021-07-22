@@ -1,0 +1,35 @@
+<%- include("partials/header"); %> 
+<body>
+
+  <%- include("partials/nav"); %> 
+
+
+    <section id="course">
+
+        <h1>Applications</h1>
+        <% var x = 1 %> 
+        <div class="container-fluid">
+          <% applications.forEach(function(data){ %> 
+            
+            <div class="flex-item-<%=x%>">
+              <div class="card">
+                <div class="card-header">
+                  <h2> <%= data.email %> </h2>
+                </div>
+                <div class="card-body">
+                  <p><%= data.phonenumber %></p>
+                  <p><%= data.course %> </p>
+                  <form action="/delete/applications/<%= data._id %>" method="post">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <% x = x + 1 %> 
+          <% }) %> 
+          </div>
+        </div>
+      </section>
+
+
+  <%- include("partials/footer") %> 

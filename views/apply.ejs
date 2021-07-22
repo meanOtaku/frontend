@@ -1,0 +1,26 @@
+<%- include("partials/header"); %> 
+<body>
+
+  <%- include("partials/nav"); %> 
+
+    <p>Applying to <%= applied %> </p>
+
+    <form action="/apply" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="phonenumber">Phone Number</label>
+        <input type="tel" class="form-control" name="phonenumber" placeholder="1234567890">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your phonenumber with anyone else.</small>
+      </div>
+      <div class="form-check">
+        <input type="text" name="course" class="form-control" value="<%= applied %>" hidden>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+  <%- include("partials/footer") %> 
