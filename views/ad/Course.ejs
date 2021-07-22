@@ -1,0 +1,160 @@
+<%- include("../partials/header"); %> 
+<body>
+
+  <%- include("../partials/nav"); %> 
+
+  <div class="container" style="padding:0px;">
+    <div class="row container">
+  
+      <div class="col-lg-6">
+        <h1>
+            <%= Course.title %> 
+        </h1>
+        <hr>
+        <h6>
+            Easily understandable by the group of <%= Course.AgeGroupRecommendation %> 
+        </h6>
+      </div>
+  
+  <nav class=" navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <!--  <a class="navbar-brand pb-2 " href="#">K-5</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="#Description">Description</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#Curriculum Layout">Curriculum</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link " href="#Course Standards">Course Standards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#Technical Requirements">Technical Requirements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/#inquire">Request a Demo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  </div>
+    <!-- nav bar ended -->
+  
+    <div id="Description" class="container container-1">
+  
+      <div class="flexItem-1">
+        <h2>Description</h2>
+        <br>
+        <p>
+          <%= Course.content %>
+        </p>
+      </div>
+      <div class="flexItem-2">
+        <section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
+          <div class="container" style="padding:0px;">
+            <h3 id="Curriculum Layout">Curriculum Layout</h3>
+  
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <!-- first-started -->
+              <% var x = 1 %> 
+              <% Course.curriculum.forEach(function(data){ %> 
+                <div class="panel panel-default">
+                  <div class="panel-heading p-3 mb-3" role="tab" id="Course-1">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=x%>" aria-expanded="true" aria-controls="collapse<%=x%>">
+                        <%= data.heading %> 
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse<%=x%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Course-<%=x%>">
+                    
+                    <div class=" panel-body px-3 mb-4">
+                      <ul>
+                        <li><%= data.modules %> </li>
+                        <br>
+                        <form action="/admin/delete/course/<%= Course.title %>/<%= data.heading %>" method="post">
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <% x = x + 1 %> 
+              <% }) %> 
+              <!-- FINISHED -->
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <div class="flexItem-3">
+        <h2>What’s Included</h2>
+        <ul>
+          <li>Interactive Online 60 mins Sessions</li>
+          <li>Phase wise customized curriculum</li>
+          <li>Be able to build ANY iOS App you want</li>
+          <li>Publish Your App on to the App Store</li>
+          <li>App Development with Swift certification</li>
+        </ul>
+        
+        <a class="btn btn-lg btn-outline-secondary btn-block" href="index.html#inquire"><strong>₹375</strong> <strike> ₹750 </strike> Discount 50% off Per Class<br> <b>Inquire Now</b></a>
+      </div>
+    </div>
+    
+    <div class="container container-3">
+      <h2 id="Course Standards">Course Standards</h2>
+      <ul>
+        <li>
+          <p> <a href="https://k12cs.org/wp-content/uploads/2016/09/K%E2%80%9312-CS-Framework-Statements-Grade-Band-View.pdf">K-12 Computer Science Framework</a></p>
+        </li>
+        <li>
+          <p> <a href="https://sites.google.com/site/cstastandards/standards">CSTA K-12 Computer Science Standards</a></p>
+        </li>
+      </ul>
+      <h2 id="Technical Requirements">Technical Requirements</h2>
+      <ul>
+        <li>Desktop, Tab, Laptop</li>
+        <li>Internet Connection (Broadband preferred)</li>
+        <li>Any Modern Browser (Safari, Chrome, Edge, Mozilla)</li>
+        <li>Any video conferencing software(Zoom preferred)</li>
+        <li>Mic, Speaker & Camera</li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <div class="form-design">
+      <form action="/admin/course/<%=Course.title%>" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Topics:</label>
+          <br>
+          <input type="text" name="heading">
+          <small id="emailHelp" class="form-text text-muted">Brief intro of Topic</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Topic details:</label>
+          <br>
+          <textarea name="modules" cols="70" rows="10"></textarea>
+          <small id="emailHelp" class="form-text text-muted">Details</small>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </form>
+    </div>
+    <div class="container-4 row" style="margin:00px;">
+      <a class="fas fa-arrow-alt-circle-up  btn-lg mr-auto" href="#dropdown"> Top </a>
+      <div class="col-lg-6">
+        <img class="image-size" src="images\transparent white.png" alt="STEM-LOGO">
+        <p>
+          <i class="fab fa-whatsapp"></i>
+          <a href="tel://+919599037732">+91 959-903-7732</a>
+        </p>
+      </div>
+    </div>
+    
+    <%- include("../partials/footer") %> 
