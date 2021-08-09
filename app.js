@@ -89,7 +89,12 @@ app.get("/admin/logout", function(req, res){
 })
 
 app.get("/admin/register", function(req, res){
-    res.render("register");
+    
+    if(req.isAuthenticated()){
+        res.render("register");
+    }else{
+        res.redirect("/admin/login");
+    }
 });
 
 app.get("/admin/console", function(req, res){
