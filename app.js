@@ -5,7 +5,7 @@ import ejs from "ejs";
 import session from "express-session";
 import passport from "passport";
 import passportLocalMongoose from "passport-local-mongoose";
-import http from "http";
+import https from "https";
 import _ from "lodash";
 import fetch from "node-fetch"
 
@@ -99,7 +99,7 @@ app.get("/admin/register", function(req, res){
 
 app.get("/admin/console", function(req, res){
 
-    http.get(url, function(response){
+    https.get(url, function(response){
         response.on("data", function(data){
             if(req.isAuthenticated()){
                 res.render("ad/console", {Course: JSON.parse(data)});
@@ -112,7 +112,7 @@ app.get("/admin/console", function(req, res){
 })
 
 app.get("/admin/course/:courseTitle", function(req, res){
-    http.get(url + "/" + req.params.courseTitle, function(response){
+    https.get(url + "/" + req.params.courseTitle, function(response){
         response.on("data", function(data){
             if(req.isAuthenticated()){
                 res.render("ad/course", {Course: JSON.parse(data)});
@@ -158,7 +158,7 @@ app.post("/admin/login", function(req, res){
 
 
 app.post("/admin/course", function(req, res){
-    fetch('http://localhost:5000/course', {
+    fetch('https://stem-backend-test.herokuapp.com/course', {
         method: 'post',
         body:    JSON.stringify(req.body),
         headers: { 'Content-Type': 'application/json' },
@@ -169,7 +169,7 @@ app.post("/admin/course", function(req, res){
 })
 
 app.post("/admin/course/:courseTitle", function(req, res){
-    fetch('http://localhost:5000/course'+'/'+req.params.courseTitle, {
+    fetch('https://stem-backend-test.herokuapp.com/course'+'/'+req.params.courseTitle, {
         method: 'patch',
         body:    JSON.stringify(req.body),
         headers: { 'Content-Type': 'application/json' },
@@ -182,7 +182,7 @@ app.post("/admin/course/:courseTitle", function(req, res){
 //delete routes
 
 app.post("/admin/delete/course", function(req, res){
-    fetch('http://localhost:5000/course', {
+    fetch('https://stem-backend-test.herokuapp.com/course', {
         method: 'delete',
         //body:    JSON.stringify(req.body),
         //headers: { 'Content-Type': 'application/json' },
@@ -193,7 +193,7 @@ app.post("/admin/delete/course", function(req, res){
 })
 
 app.post("/admin/delete/course/:courseTitle", function(req, res){
-    fetch('http://localhost:5000/course'+'/'+req.params.courseTitle, {
+    fetch('https://stem-backend-test.herokuapp.com/course'+'/'+req.params.courseTitle, {
         method: 'delete',
         //body:    JSON.stringify(req.body),
         //headers: { 'Content-Type': 'application/json' },
@@ -204,7 +204,7 @@ app.post("/admin/delete/course/:courseTitle", function(req, res){
 })
 
 app.post("/admin/delete/course/:courseTitle/:module", function(req, res){
-    fetch('http://localhost:5000/course'+'/'+req.params.courseTitle+'/'+req.params.module, {
+    fetch('https://stem-backend-test.herokuapp.com/course'+'/'+req.params.courseTitle+'/'+req.params.module, {
         method: 'delete',
         //body:    JSON.stringify(req.body),
         //headers: { 'Content-Type': 'application/json' },
@@ -222,7 +222,7 @@ app.get("/", function(req, res){
 })
 
 app.get("/course", function(req, res){
-    http.get(url, function(response){
+    https.get(url, function(response){
         response.on("data", function(data){
             res.render("nor/console", {Course: JSON.parse(data)});
         })
@@ -230,7 +230,7 @@ app.get("/course", function(req, res){
 })
 
 app.get("/course/:courseTitle", function(req, res){
-    http.get(url + "/" + req.params.courseTitle, function(response){
+    https.get(url + "/" + req.params.courseTitle, function(response){
         response.on("data", function(data){
             res.render("nor/Course", {Course: JSON.parse(data)});
         })
