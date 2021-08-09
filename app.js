@@ -10,7 +10,7 @@ import _ from "lodash";
 import fetch from "node-fetch"
 
 
-const url = "http://localhost:5000/course";
+const url = "https://stem-backend-test.herokuapp.com/";
 
 
 const app = express();
