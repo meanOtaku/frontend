@@ -30,7 +30,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 const port = process.env.PORT || 3000
-const dbURI = 'mongodb+srv://Cherag:racoon2004R@cluster0.qbqdg.mongodb.net/course?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://Cherag:racoon2004R@cluster0.qbqdg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then((result) => app.listen(port, function(){
       console.log("Server Running");
