@@ -115,7 +115,7 @@ app.get("/admin/course/:courseTitle", function(req, res){
     https.get(url + "/" + req.params.courseTitle, function(response){
         response.on("data", function(data){
             if(req.isAuthenticated()){
-                res.render("ad/course", {Course: JSON.parse(data)});
+                res.render("ad/Course", {Course: JSON.parse(data)});
             }else{
                 res.redirect("/admin/login");
             }
@@ -288,3 +288,6 @@ app.post("/apply", function(req, res){
 })
 
 
+app.get('*', function(req, res){
+    res.status(404).render("404");
+  });
