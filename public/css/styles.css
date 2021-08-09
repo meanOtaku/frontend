@@ -1,7 +1,10 @@
 body {
   background-color: #fff;
-  
-  margin: 0 auto;
+  margin: auto;
+  text-align: center;
+}
+.mid{
+  text-align: center;
 }
 
 p,h2,li {
