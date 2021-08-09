@@ -3,56 +3,53 @@
 
   <%- include("../partials/nav"); %> 
 
+ 
+  
   <div class="container" style="padding:0px;">
     <div class="row container">
-  
+
       <div class="col-lg-6">
-        <h1>
-            <%= Course.title %> 
-        </h1>
+        <h1> <%= Course.title %> </h1>
         <hr>
-        <h6>
-            Easily understandable by the group of <%= Course.AgeGroupRecommendation %> 
-        </h6>
+        <h6>Easily understandable by the group of <%= Course.AgeGroupRecommendation %></h6>
       </div>
-  
-  <nav class=" navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <!--  <a class="navbar-brand pb-2 " href="#">K-5</a> -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
-            <li class="nav-item">
-              <a class="nav-link " href="#Description">Description</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="#Curriculum Layout">Curriculum</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link " href="#Course Standards">Course Standards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="#Technical Requirements">Technical Requirements</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="/#inquire">Request a Demo</a>
-            </li>
-          </ul>
+
+      <nav class=" navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <!--  <a class="navbar-brand pb-2 " href="#">K-5</a> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+              <li class="nav-item">
+                <a class="nav-link " href="#Description">Description</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#Curriculum Layout">Curriculum</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link " href="#Course Standards">Course Standards</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#Technical Requirements">Technical Requirements</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="index.html#inquire">Request a Demo</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
   </div>
     <!-- nav bar ended -->
   
     <div id="Description" class="container container-1">
   
       <div class="flexItem-1">
-        <h2>Description</h2>
-        <br>
-        <p>
+        <h2 style="margin-bottom: 0%;">Description</h2>
+        <p style="word-wrap: break-word; width: 600px;">
           <%= Course.content %>
         </p>
       </div>
@@ -77,7 +74,7 @@
                     
                     <div class=" panel-body px-3 mb-4">
                       <ul>
-                        <li><%= data.modules %> </li>
+                        <li><%- data.modules %> </li>
                       </ul>
                     </div>
                   </div>
@@ -129,11 +126,12 @@
     <div class="container-4 row" style="margin:00px;">
       <a class="fas fa-arrow-alt-circle-up  btn-lg mr-auto" href="#dropdown"> Top </a>
       <div class="col-lg-6">
-        <img class="image-size" src="images\transparent white.png" alt="STEM-LOGO">
+        
         <p>
           <i class="fab fa-whatsapp"></i>
           <a href="tel://+919599037732">+91 959-903-7732</a>
         </p>
       </div>
     </div>
+    
     <%- include("../partials/footer") %> 

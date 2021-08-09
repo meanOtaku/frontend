@@ -29,8 +29,14 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+const port = process.env.PORT || 3000
+const dbURI = 'mongodb+srv://honeybisht123:honeybisht123@nodepro.a6gzy.mongodb.net/users?retryWrites=true&w=majority';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+  .then((result) => app.listen(port, function(){
+      console.log("Server Running");
+  }))
+  .catch((err) => console.log(err));
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const applicationSchema = new mongoose.Schema({
@@ -277,6 +283,3 @@ app.post("/apply", function(req, res){
 })
 
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log("server is running")
-})

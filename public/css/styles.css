@@ -1,6 +1,6 @@
-.console {
+body {
   background-color: #fff;
-  text-align: center;
+  
   margin: 0 auto;
 }
 
@@ -437,13 +437,8 @@ img {
   font-size: 1.2rem;
 }
 
-.form-design{
-  border:2px solid #000;
-  padding: 8px;
-  border-radius: 5%;
-  display: inline-block;
-  margin-left: 7%;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  width: auto;
+.formform{
+  margin: auto;
+  width: 50%;
+  margin-top: 50px;
 }

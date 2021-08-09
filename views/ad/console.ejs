@@ -1,4 +1,4 @@
-<%- include("../partials/header"); %>
+<%- include("../partials/header2"); %>
 <body class="console">
   <!-- navbar-start -->
   <%- include("../partials/nav"); %> 
@@ -61,7 +61,7 @@
               <h2> <%= data.title %> </h2>
             </div>
             <div class="card-body">
-              <p><%= data.content.slice(0,100) %></p>
+              <p><%= data.content.slice(0,50) %></p>
               <form action="/admin/delete/course/<%= data.title %> " method="post">
                 <button class="btn btn-primary" type="submit">Delete</button>
               </form>
@@ -111,7 +111,7 @@
 
 
   <div class="form-design">
-    <form action="/admin/course/<%=Course.title%>" method="post">
+    <form class="formform" action="/admin/course/<%=Course.title%>" method="post">
       <div class="form-group">
         <label for="exampleInputEmail1">Title:</label>
         <br>
@@ -121,18 +121,18 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Age Group Recommendation:</label>
         <br>
-        <input type="text" cols="70" name="AgeGroupRecommendation">
+        <input type="text" cols="70" name="AgeGroupRecommendation" maxlength="2">
         <small id="emailHelp" class="form-text text-muted">Brief intro of Topic</small>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Topic details:</label>
         <br>
-        <textarea name="content" cols="70" rows="10"></textarea>
+        <textarea name="content" cols="70" rows="10" minlength="55"></textarea>
         <small id="emailHelp" class="form-text text-muted">Details</small>
       </div>
       <button class="btn btn-primary" type="submit">Add</button>
     </form>
   </div>
 
-
+<script src="script/scripts.js"></script>
   <%- include("../partials/footer") %> 

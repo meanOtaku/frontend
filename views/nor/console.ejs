@@ -1,4 +1,4 @@
-<%- include("../partials/header"); %> 
+<%- include("../partials/header2"); %> 
 <body class="console">
   <!-- navbar-start -->
   <%- include("../partials/nav"); %> 
@@ -60,8 +60,7 @@
               <h2> <%= data.title %> </h2>
             </div>
             <div class="card-body">
-              <p><%= data.content.slice(0,200) + "..." %></p>
-  
+              <p><%= data.content.slice(0,50) + "..." %></p>
             </div>
             <div class="card-footer"> <a class="btn btn-lg btn-outline-dark btn-block" href="/course/<%= data.title %>">Learn more</a></div>
           </div>
