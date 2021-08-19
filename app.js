@@ -10,7 +10,7 @@ import _ from "lodash";
 import fetch from "node-fetch"
 
 
-const url = "https://stem-coding-school-api.herokuapp.com/course";
+const url = "<Api link>";
 
 
 const app = express();
